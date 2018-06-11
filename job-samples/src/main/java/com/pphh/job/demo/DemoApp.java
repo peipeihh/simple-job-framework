@@ -31,8 +31,8 @@ public class DemoApp {
         LogUtil.print("start scheduler and run...");
         scheduler.start();
 
-        LogUtil.print("sleeping for scheduler to run job.");
-        Thread.sleep(60 * 1000L);
+        LogUtil.print("sleeping for 10 seconds and wait for scheduler to run job.");
+        Thread.sleep(10 * 1000L);
 
         LogUtil.print("shutdown the scheduler gracefully.");
         scheduler.shutdown(Boolean.FALSE);

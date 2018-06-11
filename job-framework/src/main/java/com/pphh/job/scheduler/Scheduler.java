@@ -13,12 +13,12 @@ import java.util.Date;
  */
 public interface Scheduler {
 
+    Date scheduleJob(JobDetail jobDetail, Trigger trigger);
+
     void start();
 
     void shutdown();
 
     void shutdown(boolean waitForJobsToComplete);
-
-    Date scheduleJob(JobDetail jobDetail, Trigger trigger);
 
 }

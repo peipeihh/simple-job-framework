@@ -6,8 +6,8 @@ import com.pphh.job.scheduler.Scheduler;
 import java.util.Collection;
 
 /**
- * Please add description here.
- * initialize scheduler/threadpool
+ * initialize scheduler/schedulerThread/workThreadpool
+ *
  * @author huangyinhuang
  * @date 6/8/2018
  */
