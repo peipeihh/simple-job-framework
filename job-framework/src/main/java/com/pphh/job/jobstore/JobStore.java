@@ -1,7 +1,10 @@
 package com.pphh.job.jobstore;
 
 import com.pphh.job.job.JobDetail;
+import com.pphh.job.trigger.MutableTrigger;
 import com.pphh.job.trigger.Trigger;
+
+import java.util.List;
 
 /**
  * Storage of Job and Triggers
@@ -11,9 +14,11 @@ import com.pphh.job.trigger.Trigger;
  */
 public interface JobStore {
 
+    List<Trigger> acquireNextTriggers(long noLaterThan, int maxCount, long timeWindow);
+
     void storeJobAndTrigger(JobDetail jobDetail, Trigger newTrigger);
 
-    void storeJob(JobDetail jobDetail, Boolean replaceExisting);
+    void storeJob(JobDetail jobDetail, boolean replaceExisting);
 
     void removeJob(String jobKey);
 
@@ -21,7 +26,7 @@ public interface JobStore {
 
     Boolean checkJobExists(String jobKey);
 
-    void storeTrigger(Trigger newTrigger, Boolean replaceExisting);
+    void storeTrigger(Trigger newTrigger, boolean replaceExisting);
 
     void removeTrigger(String triggerKey);
 
@@ -39,5 +44,6 @@ public interface JobStore {
 
     Boolean supportsPersistence();
 
+    void triggersFired(MutableTrigger trigger);
 
 }

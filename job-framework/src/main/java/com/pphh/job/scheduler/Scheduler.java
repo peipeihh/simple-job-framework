@@ -1,5 +1,6 @@
 package com.pphh.job.scheduler;
 
+import com.pphh.job.exception.SchedulerException;
 import com.pphh.job.job.JobDetail;
 import com.pphh.job.trigger.Trigger;
 
@@ -13,7 +14,7 @@ import java.util.Date;
  */
 public interface Scheduler {
 
-    Date scheduleJob(JobDetail jobDetail, Trigger trigger);
+    Date scheduleJob(JobDetail jobDetail, Trigger trigger) throws SchedulerException;
 
     void start();
 

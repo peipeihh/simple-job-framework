@@ -6,8 +6,9 @@ import com.pphh.job.factory.SchedulerFactory;
 import com.pphh.job.factory.StdSchedulerFactory;
 import com.pphh.job.job.JobBuilder;
 import com.pphh.job.job.JobDetail;
+import com.pphh.job.trigger.SimpleTriggerBuilder;
 import com.pphh.job.trigger.Trigger;
-import com.pphh.job.trigger.TriggerBuilder;
+import com.pphh.job.trigger.GeneralTriggerBuilder;
 import com.pphh.job.util.LogUtil;
 
 /**
@@ -16,12 +17,15 @@ import com.pphh.job.util.LogUtil;
  * @author huangyinhuang
  * @date 6/10/2018
  */
-public class DemoApp {
+public class SimpleDemo {
 
     public static void main(String[] args) throws SchedulerException, InterruptedException {
         LogUtil.print("create job and trigger...");
         JobDetail jobDetail = JobBuilder.newJob(HelloJob.class).build();
-        Trigger trigger = TriggerBuilder.newTrigger().build();
+        Trigger trigger = GeneralTriggerBuilder.newTrigger()
+                .withSchedule(SimpleTriggerBuilder.simpleSchedule().withIntervalInSeconds(5).withRepeatCount(10))
+                .build();
+
 
         LogUtil.print("prepare scheduler...");
         SchedulerFactory schedulerFactory = StdSchedulerFactory.getInstance();
@@ -31,11 +35,11 @@ public class DemoApp {
         LogUtil.print("start scheduler and run...");
         scheduler.start();
 
-        LogUtil.print("sleeping for 10 seconds and wait for scheduler to run job.");
-        Thread.sleep(10 * 1000L);
+        LogUtil.print("sleeping for 60 seconds and wait for scheduler to run job.");
+        Thread.sleep(60 * 1000L);
 
         LogUtil.print("shutdown the scheduler gracefully.");
-        scheduler.shutdown(Boolean.FALSE);
+        scheduler.shutdown(Boolean.TRUE);
     }
 
 }

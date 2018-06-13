@@ -29,7 +29,9 @@ public class JobBuilder {
     }
 
     public JobDetail build() {
-        return null;
+        JobDetailImpl jobDetail = new JobDetailImpl();
+        jobDetail.setJobClass(this.jobClass);
+        return jobDetail;
     }
 
 }

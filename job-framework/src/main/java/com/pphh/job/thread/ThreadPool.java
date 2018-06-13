@@ -1,5 +1,9 @@
 package com.pphh.job.thread;
 
+import com.pphh.job.executor.JobExecutionResult;
+
+import java.util.concurrent.Callable;
+
 /**
  * Please add description here.
  *
@@ -10,7 +14,8 @@ public interface ThreadPool {
 
     void initialize();
 
-    boolean runInThread(Runnable runnable);
+    boolean runInThread(Callable<JobExecutionResult> callable);
 
     void shutdown(boolean waitForJobsToComplete);
+
 }

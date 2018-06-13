@@ -1,4 +1,4 @@
-package com.pphh.job.job;
+package com.pphh.job.executor;
 
 /**
  * Please add description here.
@@ -6,5 +6,5 @@ package com.pphh.job.job;
  * @author huangyinhuang
  * @date 6/8/2018
  */
-public interface JobExecutionContext {
+public class JobExecutionContext {
 }

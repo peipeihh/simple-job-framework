@@ -20,7 +20,7 @@ import java.util.HashMap;
 public class StdSchedulerFactory implements SchedulerFactory {
     private static StdSchedulerFactory ourInstance = new StdSchedulerFactory();
     private HashMap<String, Scheduler> schedulerMap = new HashMap<String, Scheduler>();
-    private ThreadPool threadPool = new SimpleThreadPool();
+    private ThreadPool threadPool = SimpleThreadPool.getInstance();
 
     private StdSchedulerFactory() {
     }
@@ -41,6 +41,7 @@ public class StdSchedulerFactory implements SchedulerFactory {
             scheduler = schedulerMap.get(schedName);
         } else {
             scheduler = instantiate();
+            schedulerMap.put(schedName, scheduler);
         }
         return scheduler;
     }
@@ -51,18 +52,13 @@ public class StdSchedulerFactory implements SchedulerFactory {
     }
 
     private Scheduler instantiate() {
-
-        // TODO: Shared ThreadPool
-
         // TODO: one JobStore for each scheduler
-        JobStore jobStore = new RamJobStore();
-
         SchedulerResources schedulerRes = new SchedulerResources();
         schedulerRes.setThreadPool(this.threadPool);
+        JobStore jobStore = new RamJobStore();
         schedulerRes.setJobStore(jobStore);
 
-        Long idleWaitTime = 0L;
-        Scheduler scheduler = new StdScheduler(schedulerRes, idleWaitTime);
-        return scheduler;
+        Long idleWaitTimeBySeconds = 5L;
+        return new StdScheduler(schedulerRes, idleWaitTimeBySeconds);
     }
 }
