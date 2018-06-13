@@ -33,7 +33,7 @@ public class SchedulerThread extends Thread {
     private AtomicBoolean paused = new AtomicBoolean(true);
 
     public SchedulerThread(Scheduler scheduler, SchedulerResources resources) {
-        //this.scheduler = scheduler;
+        this.scheduler = scheduler;
         this.scheResources = resources;
     }
 
