@@ -24,7 +24,7 @@ public class MultipleTriggersDemo {
         JobDetail jobDetail = JobBuilder.newJob(HelloJob.class).build();
         Trigger trigger1 = GeneralTriggerBuilder.newTrigger().build();
         Trigger trigger2 = GeneralTriggerBuilder.newTrigger()
-                .withSchedule(SimpleTriggerBuilder.simpleSchedule().withIntervalInSeconds(5).withRepeatCount(10))
+                .withSchedule(SimpleTriggerBuilder.simpleSchedule().withIntervalInSeconds(5).withRepeatCount(3))
                 .build();
         Trigger trigger3 = GeneralTriggerBuilder.newTrigger()
                 .withSchedule(SimpleTriggerBuilder.simpleSchedule().withIntervalInSeconds(1).withRepeatCount(60))
