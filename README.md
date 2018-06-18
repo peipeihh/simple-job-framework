@@ -55,7 +55,7 @@ mvn clean package
   [20180613 22:33:39-683][ThreadPoolTaskExecutor-10] hello,world
   ```
 
-2. 演示多个定时触发任务，包括，1）定时触发器默认配置，执行一次；2）每个5秒，重复10次；3）每个1秒，重复60次。
+2. 演示多个定时触发任务，包括，1）定时触发器默认配置，执行一次；2）每个5秒，重复3次；3）每个1秒，重复60次。
    执行命令如下，
    ``` bash
    java -classpath ./job-samples/target/job-samples-1.0-SNAPSHOT.jar com.pphh.job.demo.MultipleTriggersDemo

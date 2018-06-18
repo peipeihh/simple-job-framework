@@ -29,6 +29,8 @@ public class GeneralTriggerBuilder<T extends Trigger> {
             scheduleBuilder = SimpleTriggerBuilder.simpleSchedule();
         }
         MutableTrigger trig = scheduleBuilder.build();
+        trig.setStartTime(startTime);
+        trig.setEndTime(endTime);
         return (T) trig;
     }
 
